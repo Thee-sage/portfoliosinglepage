@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: [
-          "api.microlink.io", // Microlink Image Preview
-        ],
-      },
-    };
+  revalidate: 60, // Revalidate the page every 60 seconds
+  images: {
+    domains: [
+      "api.microlink.io",
+    ],
+  },
+};
 
 export default nextConfig;
