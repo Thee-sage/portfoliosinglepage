@@ -64,27 +64,24 @@ const  AnimatedLines = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
-    async function fetchUserData() {
+    const fetchData = async () => {
       try {
-        const response = await fetch('/api/mongo');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        const response = await fetch('/api/mongo', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setUserData(data);
       } catch (error) {
         setError(error.message);
-      } finally {
-        setLoading(false);
       }
-    }
-
-    fetchUserData();
-
-    const interval = setInterval(fetchUserData, 10000); // Fetch new data every 10 seconds
-
-    return () => clearInterval(interval);
+    };
+  
+    fetchData(); // Initial fetch
+  
+    const intervalId = setInterval(fetchData, 5000); // Poll every 5 seconds
+  
+    return () => clearInterval(intervalId); // Cleanup
   }, []);
+  
 
   useEffect(() => {
     function handleResize() {
