@@ -56,7 +56,7 @@ const ProjectCard = ({description, title, linky,techstackline1a,techstackline1b,
 };
 
 
-const  AnimatedLines = () => {
+const AnimatedLines = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -64,24 +64,29 @@ const  AnimatedLines = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUserData = async () => {
       try {
         const response = await fetch('/api/mongo', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Network response was not ok');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data = await response.json();
+        console.log("Fetched data:", data); // Log data to verify
         setUserData(data);
       } catch (error) {
+        console.error("Error fetching data:", error); // Log the error
         setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
-  
-    fetchData(); // Initial fetch
-  
-    const intervalId = setInterval(fetchData, 5000); // Poll every 5 seconds
-  
+
+    fetchUserData(); // Initial fetch
+
+    const intervalId = setInterval(fetchUserData, 5000); // Poll every 5 seconds
+
     return () => clearInterval(intervalId); // Cleanup
   }, []);
-  
 
   useEffect(() => {
     function handleResize() {
@@ -104,6 +109,9 @@ const  AnimatedLines = () => {
     return <div>Error: {error}</div>;
   }
 
+  if (!userData) {
+    return <div>No data available</div>;
+  }
 
   const { age, biography, whatchaboydoing, photo, projects } = userData;
 
