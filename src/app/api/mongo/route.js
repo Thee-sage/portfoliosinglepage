@@ -4,14 +4,7 @@ import { MongoClient, ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
 
-export async function dbConnect() {
-  try {
-    const connection = await mongoose.connect(String(process.env.MONGO_URI));
-    return connection;
-  } catch (err) {
-    console.error(err);
-  }
-}
+
 
 export async function GET() {
   await dbConnect();
