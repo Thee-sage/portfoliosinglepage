@@ -80,6 +80,10 @@ const  AnimatedLines = () => {
     }
 
     fetchUserData();
+
+    const interval = setInterval(fetchUserData, 10000); // Fetch new data every 10 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
