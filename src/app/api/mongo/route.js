@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 
 
 export async function GET() {
-  await dbConnect();
+ 
   const uri = process.env.MONGO_URI;
 
   const client = new MongoClient(uri);
