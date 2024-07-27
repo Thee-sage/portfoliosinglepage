@@ -64,28 +64,22 @@ const AnimatedLines = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    async function fetchUserData() {
       try {
-        const response = await fetch('/api/mongo', { cache: 'no-store' });
+        const response = await fetch('/api/mongo');
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log("Fetched data:", data); // Log data to verify
         setUserData(data);
       } catch (error) {
-        console.error("Error fetching data:", error); // Log the error
         setError(error.message);
       } finally {
         setLoading(false);
       }
-    };
+    }
 
-    fetchUserData(); // Initial fetch
-
-    const intervalId = setInterval(fetchUserData, 5000); // Poll every 5 seconds
-
-    return () => clearInterval(intervalId); // Cleanup
+    fetchUserData();
   }, []);
 
   useEffect(() => {
@@ -109,9 +103,6 @@ const AnimatedLines = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!userData) {
-    return <div>No data available</div>;
-  }
 
   const { age, biography, whatchaboydoing, photo, projects } = userData;
 
@@ -236,7 +227,7 @@ const AnimatedLines = () => {
             <div className={styles.GoSmiley1}><MdOutlinePhotoCamera className={styles.smile1} /></div>
               <div className={styles.extracontainer4}>
                 <div>
-              <img className={styles.extracontainer5} src={photo}  />
+              <img className={styles.extracontainer5} src="./profilepic.jpg" />
               </div>
             </div>
             </div>
