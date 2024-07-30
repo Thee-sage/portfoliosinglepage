@@ -25,21 +25,21 @@ const ProjectCard = ({description, title, linky,techstackline1a,techstackline1b,
       
           
             <div className={styles.prline1}>
-              
+         
               <div className={styles.prline4}>
-              <div className={styles.prline3}>{techstackline1a}</div>
-              <div className={styles.prline3}>{techstackline1b}</div>
+              <div className={styles.prline3a}>{techstackline1a}</div>
+              <div className={styles.prline3b}>{techstackline1b}</div>
               </div>
 
               <div className={styles.prline5}>
-              <div className={styles.prline3}>{techstackline2a}</div>
-              <div className={styles.prline3}>{techstackline2b}</div>
-              <div className={styles.prline3}>{techstackline1c}</div>
+              <div className={styles.prline3c}>{techstackline2a}</div>
+              <div className={styles.prline3d}>{techstackline2b}</div>
+              <div className={styles.prline3e}>{techstackline1c}</div>
               </div>
-
+              </div>
             </div>
-          </div>
-          <div>
+          
+          <div className={styles.linkname}>
           <LinkPreview
           className={styles.projectlink}
             url={linky}
