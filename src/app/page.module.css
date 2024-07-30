@@ -488,17 +488,54 @@ width:100%;
     z-index: 2; /* Ensure content is above the pseudo-elements */
     padding: 20px; /* Add some padding if needed */
   }
-  
-  .prline2{
-    position: relative;
+  .linkname{
+    position:absolute;
+    right:10px;
+  }
+  .prline1{
     display:flex;
     flex-direction: row;
     gap:8px;
-    width:10px;
+    font-size:14px;
   }
-  .prline3{
+  .prline4{
+    display:flex;
+    flex-direction: row;
+    gap:8px;
+  }
+  .prline5{
+   display:flex;
+    gap:8px;
+    flex-direction: row;
+  }
+  .prline3a{
     border: 2px dashed rgb(221, 221, 221); /* Adjust the border color and width as needed */
     border-radius: 10px;
+    display:flex;
+  padding:0px 12px 0px 12px;
+  }
+  .prline3b{
+    border: 2px dashed rgb(221, 221, 221); /* Adjust the border color and width as needed */
+    border-radius: 10px;
+    display:flex;
+  padding:0px 12px 0px 12px;
+  }
+  .prline3c{
+    border: 2px dashed rgb(221, 221, 221); /* Adjust the border color and width as needed */
+    border-radius: 10px;
+  padding:0px 12px 0px 12px;
+  display:flex;
+  }
+  .prline3d{
+    border: 2px dashed rgb(221, 221, 221); /* Adjust the border color and width as needed */
+    border-radius: 10px;
+  padding:0px 12px 0px 12px;
+  display:flex;
+  }
+  .prline3e{
+    border: 2px dashed rgb(221, 221, 221); /* Adjust the border color and width as needed */
+    border-radius: 10px;
+    display:flex;
   padding:0px 12px 0px 12px;
   }
   .projectlink{
@@ -784,21 +821,7 @@ width:100%;
     
         align-items: center;
       }
-      .prline1{
-        display:flex;
-        flex-direction: row;
-        gap:8px;
-      }
-      .prline4{
-        display:flex;
-        flex-direction: row;
-        gap:8px;
-      }
-      .prline5{
-        display:flex;
-        gap:8px;
-        flex-direction: row;
-      }
+
   
   .extracontainer21{
     position:relative;
@@ -1325,7 +1348,10 @@ width:100%;
       background-clip: content-box; /* Ensures padding does not affect border width */
       border: 2px dashed rgb(221, 221, 221); /* Adjust the border color and width as needed */
     }
-    
+    .linkname{
+      position:relative;
+      right:0px;
+    }
     .projectscontent {
       position: relative;
       z-index: 2; /* Ensure content is above the pseudo-elements */
